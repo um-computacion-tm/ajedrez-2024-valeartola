@@ -1,9 +1,9 @@
-from torre import Torre
-from caballo import Caballo
-from alfil import Alfil
-from reina import Reina
-from rey import Rey
-from peon import Peon
+from juego.torre import Torre
+from juego.caballo import Caballo
+from juego.alfil import Alfil
+from juego.reina import Reina
+from juego.rey import Rey
+from juego.peon import Peon
 
 
 class Board():
@@ -48,6 +48,18 @@ class Board():
         self.__positions__[6][6] = Peon("NEGRO")
         self.__positions__[6][7] = Peon("NEGRO")
  
+    
+    def __str__(self):
+        board_str = ""
+        for row in self.__positions__:
+            for cell in row:
+                if cell is not None:
+                    board_str += str(cell)
+                else:
+                    board_str += " "
+                board_str += "\n"
+            return board_str
+    
     def get_piece(self, row, col):
         # Retorna la pieza en la coordenada especificada
         if self.is_valid_coordinate(row, col):
