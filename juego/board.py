@@ -26,10 +26,10 @@ class Board():
         self.__positions__[0][5] = Alfil("BLANCO")
         self.__positions__[7][5] = Alfil("NEGRO") 
         self.__positions__[7][2] = Alfil("NEGRO")
-        self.__positions__[0][3] = Rey("BLANCO")
-        self.__positions__[7][3] = Rey("NEGRO")
-        self.__positions__[0][4] = Reina("BLANCO")
-        self.__positions__[7][4] = Reina("NEGRO")
+        self.__positions__[0][4] = Rey("BLANCO")
+        self.__positions__[7][4] = Rey("NEGRO")
+        self.__positions__[0][3] = Reina("BLANCO")
+        self.__positions__[7][3] = Reina("NEGRO")
 
         for col in range(8):
             self.__positions__[1][col] = Peon("BLANCO")
