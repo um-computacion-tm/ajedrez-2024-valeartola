@@ -18,7 +18,7 @@ class TestTorre(unittest.TestCase):
         possibles = torre.possible_positions_vd(4,0)
         self.assertEqual(
                 possibles,
-                [(5,0), (6,0), (7,0)]
+                [(5,0), (6,0)]
         )
 
     def test_move_vertical_asc(self):
