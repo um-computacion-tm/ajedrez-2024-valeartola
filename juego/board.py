@@ -52,6 +52,9 @@ class Board():
             return self.__positions__[row][col]
         return None
     
+    def set_piece(self, row, col, piece):
+        self.__positions__[row][col] = piece
+
     def is_valid_coordinate(self, row, col):
         # Verificar que las coordenadas estén en el rango válido (0 a 7)
         return 0 <= row < 8 and 0 <= col < 8

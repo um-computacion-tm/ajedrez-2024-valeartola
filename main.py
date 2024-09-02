@@ -5,8 +5,7 @@ class InvalidMove(Exception):
 
 def main():
     chess = Chess()
-    while True:
-        chess.show_board()
+    while chess.is_playing():
         play(chess)
 
 
