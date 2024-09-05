@@ -36,15 +36,16 @@ class Board():
             self.__positions__[6][col] = Peon("NEGRO", self)           
     
     def __str__(self):
-        board_str = ""
+        board_str = ''
         for row in self.__positions__:
-            for cell in row:
-                if cell is not None:
-                    board_str += str(cell)
+            row_str = ''
+            for piece in row:
+                if piece is None:
+                    row_str += '  '  # Espacio para una casilla vacía
                 else:
-                    board_str += " "
-            board_str += "\n"
-        return board_str
+                    row_str += str(piece) + ' '  # Usamos el método __str__ de la pieza
+            board_str += row_str + '\n'
+        return board_str 
     
     def get_piece(self, row, col):
         # Retorna la pieza en la coordenada especificada
