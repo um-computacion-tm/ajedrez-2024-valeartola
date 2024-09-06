@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.19] - 2024-09-06
+### Added
+-Added new test_board
+
+## [0.0.18] - 2024-09-05
+### Added
+-Added new style to board
+
+## [0.0.17] - 2024-09-04
+### Added
+-Test added new style to board
+
+## [0.0.16] - 2024-09-03
+### Added
+-Added test for horizontal movements of the rook
+
+## [0.0.16] - 2024-09-03
+### Added
+-Added test for horizontal movements of the rook
+
+## [0.0.15] - 2024-09-02
+### Added
+-Almost all rook moves complete
+
 ## [0.0.14] - 2024-08-31
 ### Added
 -Added to main.py "chess.is_paing"

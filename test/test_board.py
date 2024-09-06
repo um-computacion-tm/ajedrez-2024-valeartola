@@ -6,6 +6,8 @@ from juego.alfil import Alfil
 from juego.peon import Peon
 from juego.reina import Reina
 from juego.rey import Rey
+from juego.exceptions import *
+
 
 class TestBoard(unittest.TestCase):
     
@@ -40,19 +42,59 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(
             str(board),
             (
-                "♖♘♗♕♔♗♘♖\n"
-                "♙♙♙♙♙♙♙♙\n"
-                "        \n"
-                "        \n"
-                "        \n"
-                "        \n"
-                "♟♟♟♟♟♟♟♟\n"
-                "♜♞♝♛♚♝♞♜\n"
+                "♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ \n"
+                "♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙ \n"
+                "                \n"
+                "                \n"
+                "                \n"
+                "                \n"
+                "♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟ \n"
+                "♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜ \n"
             )
-        )  
+        )
 
 
 
+    def test_move(self):
+        board = Board(for_test=True)
+        torre = Torre(color='BLANCO', board=board)
+        board.set_piece(0, 0, torre)
+
+        board.move(
+            from_row=0,
+            from_col=0,
+            to_row=0,
+            to_col=1,
+        )
+
+        self.assertIsInstance(
+            board.get_piece(0, 1),
+            Torre,
+        )
+        self.assertEqual(
+            str(board),
+            (
+                "  ♖             \n"
+                "                \n"
+                "                \n"
+                "                \n"
+                "                \n"
+                "                \n"
+                "                \n"
+                "                \n"
+            )
+        )
+
+    def test_get_piece_out_of_range(self):
+        board = Board(for_test=True)
+
+        with self.assertRaises(OutOfBoard) as exc:
+            board.get_piece(10, 10)
+
+        self.assertEqual(
+            exc.exception.message,
+            "La posicion indicada se encuentra fuera del tablero"
+        )
 
 
 if __name__ == "__main__":
