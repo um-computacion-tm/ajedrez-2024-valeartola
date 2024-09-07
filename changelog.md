@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.20] - 2024-09-07
 ### Added
--Added test_alfil
+-Added test_alfil and new things to alfil
 
 ## [0.0.19] - 2024-09-06
 ### Added
