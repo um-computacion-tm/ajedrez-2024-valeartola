@@ -5,9 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.20] - 2024-09-07
+### Added
+-Added test_alfil
+
 ## [0.0.19] - 2024-09-06
 ### Added
--Added new test_board
+-Added new test_board 
 
 ## [0.0.18] - 2024-09-05
 ### Added
