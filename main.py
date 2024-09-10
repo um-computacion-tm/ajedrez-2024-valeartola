@@ -1,7 +1,6 @@
 
 from juego.chess import Chess
-class InvalidMove(Exception):
-    ...
+from juego.exceptions import InvalidMove
 
 def main():
     chess = Chess()
