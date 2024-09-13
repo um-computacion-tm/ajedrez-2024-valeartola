@@ -19,7 +19,8 @@ class TestTorre(unittest.TestCase):
         self.assertEqual(
                 possibles,
                 [(5,1), (6,2), (3,1), (2,2)]
-        )    
+        )   
+     
 
 
 

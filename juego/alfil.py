@@ -34,3 +34,4 @@ class Alfil(Piece):
         return possibles  
 
 
+
