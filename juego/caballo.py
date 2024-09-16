@@ -5,8 +5,5 @@ class Caballo(Piece):
     white_str  = "♘"
     black_str  = "♞"
 
-    # def __str__(self):
-    #     if self.__color__ == "BLANCO":
-    #         return "♘"
-    #     else:
-    #         return "♞"
+    def get_possible_positions(self, from_row, from_col):
+        return ()
