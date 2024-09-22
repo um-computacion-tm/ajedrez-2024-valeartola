@@ -16,15 +16,15 @@ class Peon(Piece):
         return possibles
 
     def get_possible_positions_eat(self, from_row, from_col):
-        if self.__color__ == "BLACK":
+        if self.__color__ == "NEGRO":
             other_piece = self.__board__.get_piece(from_row + 1, from_col + 1)
-            if other_piece and other_piece.__color__ == "WHITE":
+            if other_piece and other_piece.__color__ == "BLANCO":
                 return [(from_row + 1, from_col + 1)]
 
         return []
 
     def get_possible_positions_move(self, from_row, from_col):
-        if self.__color__ == "BLACK":
+        if self.__color__ == "NEGRO":
             if self.__board__.get_piece(from_row + 1, from_col) is None:
                 if (
                     from_row == 1 and
