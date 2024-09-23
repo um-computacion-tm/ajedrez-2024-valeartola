@@ -14,7 +14,7 @@ class TestPawn(unittest.TestCase):
             possibles,
             [(2, 5), (3, 5)]
         )
-""" def test_not_initial_black(self):
+    def test_not_initial_black(self):
         board = Board(for_test = True)
         peon = Peon("NEGRO", board)
 
@@ -75,7 +75,7 @@ class TestPawn(unittest.TestCase):
         self.assertEqual(
             possibles,
             []
-        )"""
+        )
 
 if __name__ == "__main__":
     unittest.main()            
