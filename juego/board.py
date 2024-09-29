@@ -37,21 +37,37 @@ class Board():
                 self.__positions__[1][col] = Peon("BLANCO", self)
                 self.__positions__[6][col] = Peon("NEGRO", self)           
     
+
+
     def __str__(self):
-        board_str = ''
-        for row in self.__positions__:
-            row_str = ''
-            for piece in row:
-                if piece is None:
-                    row_str += '  '  # Espacio para una casilla vacía
+        # Encabezado y pie con los números de las columnas espaciados
+        header_footer = "    " + "   ".join(str(i) for i in range(8)) + "\n"
+        board_str = header_footer
+        board_str += "  +" + "---+" * 8 + "\n"  # Línea superior del tablero
+        
+        # Construir el tablero con las piezas y las casillas vacías
+        for i, row in enumerate(self.__positions__):
+            board_str += f"{i} |"  # Añadir el número de fila al inicio
+            for cell in row:
+                if cell is None:
+                    board_str += "   |"  # Representación de casilla vacía
                 else:
-                    row_str += str(piece) + ' '  # Usamos el método __str__ de la pieza
-            board_str += row_str + '\n'
-        return board_str 
+                    board_str += f" {str(cell)} |"  # Representación de la pieza
+            board_str += f" {i}\n"  # Añadir el número de fila al final
+            board_str += "  +" + "---+" * 8 + "\n"  # Añadir la línea divisoria entre filas
+        
+        board_str += header_footer  # Añadir el pie con los números de las columnas
+        return board_str
+
+
+
+
+    def is_valid_coordinate(self, row, col):
+        return 0 <= row < 8 and 0 <= col < 8
     
     def get_piece(self, row, col):
         if not (
-            0 <= row < 8 or 0 <= col < 8
+            self.is_valid_coordinate
         ):
             raise OutOfBoard()
         return self.__positions__[row][col]
@@ -65,7 +81,4 @@ class Board():
         self.set_piece(to_row, to_col, origin)
         self.set_piece(from_row, from_col, None)
 
-    # def is_valid_coordinate(self, row, col):
-    #     Verificar que las coordenadas estén en el rango válido (0 a 7)
-    #     return 0 <= row < 8 and 0 <= col < 8
 
