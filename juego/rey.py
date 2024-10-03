@@ -6,7 +6,10 @@ class Rey(Piece):
     black_str  = "♚"
     
 
-    def get_possible_positions(self, from_row, from_col):
+    def valid_move(self, from_row, from_col, to_row, to_col):
+        return max(abs(from_row - to_row), abs(from_col - to_col)) == 1
+
+"""    def get_possible_positions(self, from_row, from_col):
         possibles = self.possible_orthogonal_positions(
             from_row,
             from_col,
@@ -21,4 +24,4 @@ class Rey(Piece):
                 abs(from_col - possible_col) <= 1
             ):
                 possible_king.append((possible_row, possible_col))
-        return possible_king
+        return possible_king"""
