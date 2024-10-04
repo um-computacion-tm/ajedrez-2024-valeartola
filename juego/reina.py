@@ -5,30 +5,20 @@ class Reina(Piece):
     white_str  = "♕"
     black_str  = "♛"
 
+    def valid_move(self, from_row, from_col, to_row, to_col):
+        # Movimiento como torre (horizontal o vertical)
+        if from_col == to_col or from_row == to_row: #DUDA
+            # Validación para movimiento horizontal o vertical
+            if not self._is_path_clear_straight(from_row, from_col, to_row, to_col):
+                return False
+            return True
 
-    def valid_positions(self,from_row, from_col, to_row, to_col):
-        possible_positions = (self.possible_positions_hr(from_row, from_col) + self.possible_positions_hl(from_row, from_col) + 
-                            self.possible_positions_vd(from_row, from_col) + self.possible_positions_va(from_row, from_col))
-        return (to_row, to_col) in possible_positions
-    
-    def possible_positions_vd(self,row,col):
-        possibles = []
-        for next_row in range (row + 1, 8):
-            possibles.append((next_row,col))
-        return possibles
+        # Movimiento como alfil (diagonal)
+        if abs(from_row - to_row) == abs(from_col - to_col):
+            # Validación para movimiento diagonal
+            if not self._is_path_clear_diagonal(from_row, from_col, to_row, to_col):
+                return False #DUDA
+            return True
 
-    def possible_positions_va(self,row,col):
-        possibles = []
-        for next_row in range (row - 1, -1, -1):
-            possibles.append((next_row,col))
-        return possibles
-
-
-"""    def get_possible_positions(self, from_row, from_col):
-        return self.possible_orthogonal_positions(
-            from_row,
-            from_col,
-        ) + self.possible_diagonal_positions(
-            from_row,
-            from_col,
-        )"""
+        # No es un movimiento válido para la reina
+        return False
