@@ -5,9 +5,81 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.6] - 2024-10-05
+### Added 
+-Added new pieces p2
+
+## [0.1.5] - 2024-10-04
+### Added 
+-Added new pieces
+
+## [0.1.4] - 2024-10-03
+### Added 
+-Added new rey with test
+
+## [0.1.3] - 2024-10-02
+### Added 
+-Added new caballo with test
+
+## [0.1.3] - 2024-10-01
+### Added 
+-Added new piece
+
+## [0.1.2] - 2024-09-30
+### Added 
+-Added new exceptions to chess and new tests to test_chess
+
+## [0.1.1] - 2024-09-29
+### Added 
+-Added new main
+
+## [0.1.0] - 2024-09-28
+### Added 
+-Added new style to board
+
+## [0.0.29] - 2024-09-26
+### Added 
+-Added test king
+
+## [0.0.28] - 2024-09-25
+### Added 
+-Added new king
+
+## [0.0.27] - 2024-09-24
+### Added 
+-Added possible diagonal positions
+
+## [0.0.26] - 2024-09-23
+### Added 
+-Added test_peon
+
+## [0.0.25] - 2024-09-22
+### Fixxed 
+-Fixxed peon
+
+## [0.0.24] - 2024-09-21
+### Added
+-Added test_peon
+
+## [0.0.23] - 2024-09-16
+### Added
+-Added caballo.py
+
+## [0.0.22] - 2024-09-15
+### Added
+-Added somes moves to peon.py
+
+## [0.0.21] - 2024-09-13
+### Added
+-Added somes moves to reina.py
+
+## [0.0.20] - 2024-09-07
+### Added
+-Added test_alfil and new things to alfil
+
 ## [0.0.19] - 2024-09-06
 ### Added
--Added new test_board
+-Added new test_board 
 
 ## [0.0.18] - 2024-09-05
 ### Added

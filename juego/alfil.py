@@ -5,8 +5,9 @@ class Alfil(Piece):
     white_str  = "♗"
     black_str  = "♝"
 
-    # def __str__(self):
-    #     if self.__color__ == "BLANCO":
-    #         return "♗"
-    #     else:
-    #         return "♝"
+    def valid_move(self, from_row, from_col, to_row, to_col):
+        # Movimiento en diagonal
+        if abs(from_row - to_row) == abs(from_col - to_col):
+            if self._is_path_clear_diagonal(from_row, from_col, to_row, to_col):
+               return True
+        return False  # No es un movimiento válido para el alfil
