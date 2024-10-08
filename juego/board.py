@@ -6,7 +6,6 @@ from juego.rey import Rey
 from juego.peon import Peon
 from juego.exceptions import OutOfBoard
 
-
 class Board():
     def __init__(self, for_test = False):
         self.__positions__ = []
@@ -36,8 +35,6 @@ class Board():
             for col in range(8):
                 self.__positions__[1][col] = Peon("BLANCO", self)
                 self.__positions__[6][col] = Peon("NEGRO", self)           
-    
-
 
     def __str__(self):
         # Encabezado y pie con los números de las columnas espaciados
@@ -56,22 +53,16 @@ class Board():
             board_str += f" {i}\n"  # Añadir el número de fila al final
             board_str += "  +" + "---+" * 8 + "\n"  # Añadir la línea divisoria entre filas
         
-        board_str += header_footer  # Añadir el pie con los números de las columnas
+        board_str += header_footer  
         return board_str
 
-
-
-
     def is_valid_coordinate(self, row, col):
-        return 0 <= row < 8 and 0 <= col < 8
-    
+        return 0 <= row <= 8 and 0 <= col <= 8
+
     def get_piece(self, row, col):
-        if not (
-            self.is_valid_coordinate
-        ):
+        if not self.is_valid_coordinate(row, col):
             raise OutOfBoard()
         return self.__positions__[row][col]
-
     
     def set_piece(self, row, col, piece):
         self.__positions__[row][col] = piece
@@ -80,5 +71,7 @@ class Board():
         origin = self.get_piece(from_row, from_col)
         self.set_piece(to_row, to_col, origin)
         self.set_piece(from_row, from_col, None)
+        if isinstance(origin, Peon) and (to_row == 0 or to_row == 7):
+            self.set_piece(to_row, to_col, Reina(origin.__color__, self))
 
 

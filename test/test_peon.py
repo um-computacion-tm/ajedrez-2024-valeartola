@@ -1,81 +1,51 @@
 import unittest
 from juego.peon import Peon
 from juego.board import Board
+from juego.alfil import Alfil
 
 
 class TestPawn(unittest.TestCase):
 
-    def test_initial_black(self):
-        board = Board(for_test = True)
-        peon = Peon("NEGRO", board)
-
-        possibles = peon.get_possible_positions(1, 5)
-        self.assertEqual(
-            possibles,
-            [(2, 5), (3, 5)]
-        )
-    def test_not_initial_black(self):
-        board = Board(for_test = True)
-        peon = Peon("NEGRO", board)
-
-        possibles = peon.get_possible_positions(2, 5)
-        self.assertEqual(
-            possibles,
-            [(3, 5)]
-        )
-
-    def test_eat_left_black(self):
-        board = Board(for_test = True)
-        peon = Peon("NEGRO", board)
-        board.set_piece(3, 6, Peon("BLANCO", board))
-
-        possibles = peon.get_possible_positions(2, 5)
-        self.assertEqual(
-            possibles,
-            [(3, 5), (3, 6)]
-        )
-
-    def test_initial_white(self):
-        board = Board(for_test = True)
+    def test_str(self):
+        board = Board()
         peon = Peon("BLANCO", board)
-
-        possibles = peon.get_possible_positions(6, 4)
         self.assertEqual(
-            possibles,
-            [(5, 4), (4, 4)]
+            str(peon),
+            "♙",
         )
 
-    def test_not_initial_white(self):
-        board = Board(for_test = True)
+    def test_valid_move_valid_white(self):
+        board = Board(for_test=True)
         peon = Peon("BLANCO", board)
+        self.assertTrue(peon.valid_move(1, 0, 2, 0))  
+        self.assertTrue(peon.valid_move(1, 0, 3, 0))
 
-        possibles = peon.get_possible_positions(5, 4)
-        self.assertEqual(
-            possibles,
-            [(4, 4)]
-        )
-
-    def test_not_initial_white_block(self):
-        board = Board(for_test = True)
+    def test_valid_move_valid_white_test_false(self):
+        board = Board(for_test=False)
         peon = Peon("BLANCO", board)
-        board.set_piece(4, 4, Peon("NEGRO", board))
+        self.assertTrue(peon.valid_move(1, 0, 2, 0))  
+        self.assertFalse(peon.valid_move(1, 0, 2, 1)) 
 
-        possibles = peon.get_possible_positions(5, 4)
-        self.assertEqual(
-            possibles,
-            []
-        )
+    def test_invalid_move_valid_white(self):
+        board = Board(for_test=True)
+        peon = Peon("BLANCO", board)
+        self.assertFalse(peon.valid_move(1, 0, 2, 2))  
+        self.assertFalse(peon.valid_move(1, 0, 2, 1))  
 
-    def test_not_initial_black_block(self):
-        board = Board(for_test = True)
-        peon = Peon("NEGRO", board)
-        board.set_piece(5, 4, Peon("BLANCO", board))
+    def test_valid_move_eat_other_piece(self):
+        board = Board(for_test=True)
+        peon = Peon("BLANCO", board)
+        board.set_piece(2, 0, peon)
+        alfil = Alfil("NEGRO", board)
+        board.set_piece(3, 1, alfil)
+        self.assertTrue(peon.valid_move(2, 0, 3, 1))  
 
-        possibles = peon.get_possible_positions(4, 4)
-        self.assertEqual(
-            possibles,
-            []
-        )
 
-if __name__ == "__main__":
-    unittest.main()            
+    
+    
+
+
+
+
+    if __name__ == "__main__":
+        unittest.main()            

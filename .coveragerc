@@ -2,6 +2,7 @@
 source =
     juego
     test
+    main
 omit =
     venv/*
     */test*
