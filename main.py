@@ -1,7 +1,7 @@
 from juego.chess import Chess
 from juego.exceptions import InvalidMove
 from juego.exceptions import Withoutcoordinate
-from juego.exceptions import NoneEmpate
+
 
 def main():
     chess = Chess()
@@ -36,8 +36,6 @@ def play(chess):
        from_col = int(input("Desde la columna:  "))
        to_row = int(input("A la fila:  "))
        to_col = int(input("A la columna:  "))
-    #    if from_row.strip() == '' or from_col.strip() == '' or to_row.strip() == '' or to_col.strip() == '':
-    #         raise Withoutcoordinate
        chess.move(
             from_row,
             from_col,
@@ -45,10 +43,10 @@ def play(chess):
             to_col
         )
     except InvalidMove as e:
-        print (e)
+        print (e.message)
 
     except Exception as e:
-        print("Error", e)
+        print("Ocurrio un error, inténtelo de vuelta")
 
 
 

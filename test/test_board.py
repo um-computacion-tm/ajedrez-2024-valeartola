@@ -65,8 +65,6 @@ class TestBoard(unittest.TestCase):
         )
 
 
-
-
     def test_move(self):
         board = Board(for_test=True)
         torre = Torre(color='BLANCO', board=board)
@@ -117,8 +115,28 @@ class TestBoard(unittest.TestCase):
 
         self.assertEqual(
             exc.exception.message,
-            "La posicion indicada se encuentra fuera del tablero"
+            "La posición indicada se encuentra fuera del tablero"
         )
+
+    def test_promotion_queen_white(self):
+        board = Board(for_test=True)
+        peon = Peon('BLANCO', board)
+        board.set_piece(1, 0, peon)  # Coloca el peón en la fila 1
+        self.assertEqual(board.get_piece(1, 0), peon)
+        board.move(1, 0, 0, 0)  # Mueve el peón a la fila 0
+        new_piece = board.get_piece(0, 0)
+        self.assertIsInstance(new_piece, Reina)  # Verifica que la nueva pieza sea una reina
+        self.assertEqual(new_piece.__color__, 'BLANCO')  # Verifica que la reina sea blanca
+
+    def test_promotion_queen_black(self):
+        board = Board(for_test=True)
+        peon = Peon('NEGRO', board)
+        board.set_piece(6, 0, peon)  # Coloca el peón en la fila 6
+        self.assertEqual(board.get_piece(6, 0), peon)
+        board.move(6, 0, 7, 0)  # Mueve el peón a la fila 7
+        new_piece = board.get_piece(7, 0)
+        self.assertIsInstance(new_piece, Reina)  # Verifica que la nueva pieza sea una reina
+        self.assertEqual(new_piece.__color__, 'NEGRO') 
 
 
 if __name__ == "__main__":

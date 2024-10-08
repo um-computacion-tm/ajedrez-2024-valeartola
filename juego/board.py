@@ -60,7 +60,7 @@ class Board():
         return 0 <= row <= 8 and 0 <= col <= 8
 
     def get_piece(self, row, col):
-        if not (self.is_valid_coordinate):
+        if not self.is_valid_coordinate(row, col):
             raise OutOfBoard()
         return self.__positions__[row][col]
     
@@ -71,5 +71,7 @@ class Board():
         origin = self.get_piece(from_row, from_col)
         self.set_piece(to_row, to_col, origin)
         self.set_piece(from_row, from_col, None)
+        if isinstance(origin, Peon) and (to_row == 0 or to_row == 7):
+            self.set_piece(to_row, to_col, Reina(origin.__color__, self))
 
 

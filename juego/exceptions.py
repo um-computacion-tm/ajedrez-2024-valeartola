@@ -26,3 +26,4 @@ class OutOfBoard(InvalidMove):
 
 class Withoutcoordinate(InvalidMove):
     message = "Coordenada vacia"
+
