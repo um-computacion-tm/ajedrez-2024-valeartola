@@ -64,27 +64,28 @@ class Piece():
     def _is_path_clear_straight(self, from_row, from_col, to_row, to_col):
         """Chequea si el camino está despejado para movimientos rectos (vertical u horizontal)."""
         
-        # Determinar el tipo de movimiento y los pasos a seguir
-        step_row = 0
-        step_col = 0
+        # Calcular las diferencias entre filas y columnas
+        row_diff = to_row - from_row
+        col_diff = to_col - from_col
 
-        if from_col == to_col:  # Movimiento vertical
-            step_row = 1 if to_row > from_row else -1
-            distance = abs(to_row - from_row)
-        elif from_row == to_row:  # Movimiento horizontal
-            step_col = 1 if to_col > from_col else -1
-            distance = abs(to_col - from_col)
-        else:
+        # Verificar si es un movimiento recto (vertical u horizontal)
+        if row_diff != 0 and col_diff != 0:
             return False  # No es un movimiento recto
 
+        # Calcular los pasos en fila y columna
+        step_row = (row_diff // abs(row_diff)) if row_diff != 0 else 0
+        step_col = (col_diff // abs(col_diff)) if col_diff != 0 else 0
+        distance = max(abs(row_diff), abs(col_diff))  # Usar la distancia máxima (en fila o columna)
+
         # Verificar si el camino está despejado
-        for step in range(1, distance):  # Recorrer desde la casilla siguiente a la de origen
+        for step in range(1, distance):
             current_row = from_row + step * step_row
             current_col = from_col + step * step_col
             if self.__board__.get_piece(current_row, current_col) is not None:
                 return False  # Hay una pieza bloqueando el camino
 
         return True  # Camino despejado
+
 
 
     def _is_path_clear_diagonal(self, from_row, from_col, to_row, to_col):
