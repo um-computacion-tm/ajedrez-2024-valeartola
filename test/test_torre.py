@@ -30,6 +30,12 @@ class TestTorre(unittest.TestCase):
         # Movimiento inválido (diagonal)
         self.assertFalse(torre.valid_move(4, 4, 6, 6))
 
+    def test_invalid_move_diagonal_new(self):
+        board = Board(for_test=True)
+        torre = Torre("BLANCO", board)          
+        # Movimiento inválido (diagonal)
+        self.assertFalse(torre.valid_move(2, 3, 3, 4))
+
     # def test_valid_move_blocked(self):
     #     board = Board(for_test=True)
     #     torre = Torre("NEGRO", board) 
